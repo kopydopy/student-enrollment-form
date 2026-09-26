@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Enrollment System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="eyebrow">Academic Records</p>
+      <h1>Student Enrollment System</h1>
+      <p class="lede">
+        Complete the form below to register a student
+      </p>
+    </header>
+
+    <main>
+      <section class="card" aria-labelledby="form-heading">
+        <h2 id="form-heading">Enrollment Form</h2>
+        <p id="success-message" class="success" hidden role="status">
+          Enrollment submitted successfully.
+        </p>
+
+        <form id="enrollment-form" novalidate>
+          <div class="field">
+            <label for="student-id">Student ID <span aria-hidden="true">*</span></label>
+            <input
+              id="student-id"
+              name="studentId"
+              type="text"
+              required
+              minlength="5"
+              autocomplete="off"
+              aria-describedby="student-id-error"
+            />
+            <p class="error" id="student-id-error" role="alert"></p>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="prefix">Prefix</label>
+              <input
+                id="prefix"
+                name="prefix"
+                type="text"
+                minlength="2"
+                placeholder="Optional"
+                aria-describedby="prefix-error"
+              />
+              <p class="error" id="prefix-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label for="first-name">First Name <span aria-hidden="true">*</span></label>
+              <input
+                id="first-name"
+                name="firstName"
+                type="text"
+                required
+                minlength="3"
+                autocomplete="given-name"
+                aria-describedby="first-name-error"
+              />
+              <p class="error" id="first-name-error" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="middle-name">Middle Name</label>
+              <input
+                id="middle-name"
+                name="middleName"
+                type="text"
+                minlength="2"
+                placeholder="Optional"
+                aria-describedby="middle-name-error"
+              />
+              <p class="error" id="middle-name-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label for="last-name">Last Name <span aria-hidden="true">*</span></label>
+              <input
+                id="last-name"
+                name="lastName"
+                type="text"
+                required
+                minlength="2"
+                autocomplete="family-name"
+                aria-describedby="last-name-error"
+              />
+              <p class="error" id="last-name-error" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="suffix">Suffix</label>
+              <input
+                id="suffix"
+                name="suffix"
+                type="text"
+                minlength="2"
+                placeholder="Optional"
+                aria-describedby="suffix-error"
+              />
+              <p class="error" id="suffix-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label for="email">Email <span aria-hidden="true">*</span></label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                aria-describedby="email-error"
+              />
+              <p class="error" id="email-error" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="course">Course <span aria-hidden="true">*</span></label>
+              <select id="course" name="course" required aria-describedby="course-error">
+                <option value="">Select a course</option>
+                <option value="BSIT">BSIT</option>
+                <option value="BSCS">BSCS</option>
+                <option value="BMMA">BMMA</option>
+                <option value="BSAIS">BSAIS</option>
+              </select>
+              <p class="error" id="course-error" role="alert"></p>
+            </div>
+
+            <div class="field" id="major-field" hidden>
+              <label for="major">Major <span aria-hidden="true">*</span></label>
+              <select id="major" name="major" aria-describedby="major-error">
+                <option value="">Select a major</option>
+                <option value="Net Sec">Net Sec</option>
+                <option value="Web Tech">Web Tech</option>
+                <option value="ERP">ERP</option>
+              </select>
+              <p class="error" id="major-error" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="year-level">Year Level <span aria-hidden="true">*</span></label>
+            <select
+              id="year-level"
+              name="yearLevel"
+              required
+              aria-describedby="year-level-error"
+            >
+              <option value="">Select year level</option>
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+            </select>
+            <p class="error" id="year-level-error" role="alert"></p>
+          </div>
+
+          <button type="submit">Submit Enrollment</button>
+        </form>
+      </section>
+
+      <section class="card records" aria-labelledby="records-heading">
+        <div class="records-header">
+          <h2 id="records-heading">Submitted Enrollments</h2>
+          <p id="records-empty" class="empty">No submissions yet.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table id="records-table" hidden>
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Prefix</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Suffix</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Major</th>
+                <th>Year Level</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
